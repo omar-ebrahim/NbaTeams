@@ -1,6 +1,6 @@
 //
 //  Team.swift
-//  MyDemoApp
+//  NbaTeams
 //
 //  Created by Omar Ebrahim on 05/02/2023.
 //
@@ -16,7 +16,7 @@ struct NbaTeam: Hashable, Codable, Identifiable {
     var location: String
     var inFavourites: Bool
     
-    private var imageName: String
+    var imageName: String
     
     var image : Image {
         Image(imageName)

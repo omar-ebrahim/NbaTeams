@@ -1,6 +1,6 @@
 //
-//  MyDemoAppApp.swift
-//  MyDemoApp
+//  NbaTeams.swift
+//  NbaTeams
 //
 //  Created by Omar Ebrahim on 05/02/2023.
 //

@@ -19,6 +19,7 @@
 		0774567D298FADA600A1EE7E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774567C298FADA600A1EE7E /* Preview Assets.xcassets */; };
 		07745685298FB04300A1EE7E /* nbateams.json in Resources */ = {isa = PBXBuildFile; fileRef = 07745684298FB04300A1EE7E /* nbateams.json */; };
 		07AEDD2C29901C970093B945 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEDD2B29901C970093B945 /* FavouriteButton.swift */; };
+		07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		0774567C298FADA600A1EE7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07745684298FB04300A1EE7E /* nbateams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nbateams.json; sourceTree = "<group>"; };
 		07AEDD2B29901C970093B945 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
+		07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 		07745674298FADA500A1EE7E /* NbaTeams */ = {
 			isa = PBXGroup;
 			children = (
+				07CEDF272991029F00D230A8 /* Extensions */,
 				072F3827298FB6E60093BCC9 /* Models */,
 				07745683298FB01600A1EE7E /* Resources */,
 				072F382C298FBC820093BCC9 /* Views */,
@@ -113,6 +116,14 @@
 				07745684298FB04300A1EE7E /* nbateams.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		07CEDF272991029F00D230A8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +204,7 @@
 				072F3832298FC3BD0093BCC9 /* TeamRow.swift in Sources */,
 				072F382B298FB8ED0093BCC9 /* ModelData.swift in Sources */,
 				072F3834298FC54E0093BCC9 /* TeamDetail.swift in Sources */,
+				07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */,
 				07745676298FADA500A1EE7E /* NbaTeams.swift in Sources */,
 				072F3829298FB79B0093BCC9 /* NbaTeam.swift in Sources */,
 			);

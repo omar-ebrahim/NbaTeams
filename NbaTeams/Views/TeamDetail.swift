@@ -1,6 +1,6 @@
 //
 //  TeamDetail.swift
-//  MyDemoApp
+//  NbaTeams
 //
 //  Created by Omar Ebrahim on 05/02/2023.
 //
@@ -10,6 +10,9 @@ import SwiftUI
 struct TeamDetail: View {
     
     @EnvironmentObject var modelData: ModelData
+    
+    @State private var bgColour: Color = .yellow
+    
     var team: NbaTeam
     
     var teamIndex: Int {
@@ -19,10 +22,9 @@ struct TeamDetail: View {
     }
     
     var body: some View {
-        
         ScrollView {
             Rectangle()
-                .fill(.yellow)
+                .fill(bgColour)
                 .frame(height: 225)
                 .ignoresSafeArea()
             
@@ -32,21 +34,19 @@ struct TeamDetail: View {
                 .padding(.bottom, -210)
             
             VStack(alignment: .leading) {
-                
                 HStack {
                     Text(team.teamName)
                         .font(.title)
                     Spacer()
                     FavouriteButton(isSet: $modelData.nbaTeams[teamIndex].inFavourites)
                 }
-                
                 Divider()
-                
-            }.padding()
-            
-           
-            
-            
+            }
+            .padding()
+            .onAppear {
+                let avgColour = (UIImage(named: team.imageName)?.averageColour) ?? .systemGray
+                bgColour = Color(avgColour)
+            }
         }
         .navigationTitle(team.teamName)
         .navigationBarTitleDisplayMode(.inline)
@@ -55,7 +55,7 @@ struct TeamDetail: View {
 
 struct TeamDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TeamDetail(team: ModelData().nbaTeams[6])
+        TeamDetail(team: ModelData().nbaTeams[5])
             .environmentObject(ModelData())
     }
 }
