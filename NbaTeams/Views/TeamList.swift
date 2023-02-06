@@ -12,8 +12,6 @@ struct TeamList: View {
     @EnvironmentObject var modelData: ModelData
     @State private var showFavoritesOnly = false
     
-    var team: NbaTeam
-    
     var filteredTeams: [NbaTeam] {
         modelData.nbaTeams.filter{
             team in
@@ -53,7 +51,7 @@ struct TeamList: View {
 
 struct TeamsList_Previews: PreviewProvider {
     static var previews: some View {
-        TeamList(team: ModelData().nbaTeams[0])
+        TeamList()
             .environmentObject(ModelData())
     }
 }
