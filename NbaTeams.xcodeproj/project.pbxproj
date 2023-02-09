@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0701BB282991192100ECA1A0 /* TODOGetData.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0701BB272991192100ECA1A0 /* TODOGetData.rtf */; };
 		072F3829298FB79B0093BCC9 /* NbaTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F3828298FB79B0093BCC9 /* NbaTeam.swift */; };
 		072F382B298FB8ED0093BCC9 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F382A298FB8ED0093BCC9 /* ModelData.swift */; };
 		072F382E298FBCAF0093BCC9 /* RoundedSquareImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F382D298FBCAF0093BCC9 /* RoundedSquareImage.swift */; };
@@ -20,9 +21,11 @@
 		07745685298FB04300A1EE7E /* nbateams.json in Resources */ = {isa = PBXBuildFile; fileRef = 07745684298FB04300A1EE7E /* nbateams.json */; };
 		07AEDD2C29901C970093B945 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEDD2B29901C970093B945 /* FavouriteButton.swift */; };
 		07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */; };
+		07DEE39D29924AA100DF13C6 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEE39C29924AA100DF13C6 /* Scoreboard.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0701BB272991192100ECA1A0 /* TODOGetData.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODOGetData.rtf; sourceTree = "<group>"; };
 		072F3828298FB79B0093BCC9 /* NbaTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NbaTeam.swift; sourceTree = "<group>"; };
 		072F382A298FB8ED0093BCC9 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		072F382D298FBCAF0093BCC9 /* RoundedSquareImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSquareImage.swift; sourceTree = "<group>"; };
@@ -37,6 +40,7 @@
 		07745684298FB04300A1EE7E /* nbateams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nbateams.json; sourceTree = "<group>"; };
 		07AEDD2B29901C970093B945 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		07DEE39C29924AA100DF13C6 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,7 @@
 			children = (
 				072F3828298FB79B0093BCC9 /* NbaTeam.swift */,
 				072F382A298FB8ED0093BCC9 /* ModelData.swift */,
+				07DEE39C29924AA100DF13C6 /* Scoreboard.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -74,6 +79,7 @@
 		07745669298FADA500A1EE7E = {
 			isa = PBXGroup;
 			children = (
+				0701BB272991192100ECA1A0 /* TODOGetData.rtf */,
 				07745674298FADA500A1EE7E /* NbaTeams */,
 				07745673298FADA500A1EE7E /* Products */,
 			);
@@ -185,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0774567D298FADA600A1EE7E /* Preview Assets.xcassets in Resources */,
+				0701BB282991192100ECA1A0 /* TODOGetData.rtf in Resources */,
 				0774567A298FADA600A1EE7E /* Assets.xcassets in Resources */,
 				07745685298FB04300A1EE7E /* nbateams.json in Resources */,
 			);
@@ -206,6 +213,7 @@
 				072F3834298FC54E0093BCC9 /* TeamDetail.swift in Sources */,
 				07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */,
 				07745676298FADA500A1EE7E /* NbaTeams.swift in Sources */,
+				07DEE39D29924AA100DF13C6 /* Scoreboard.swift in Sources */,
 				072F3829298FB79B0093BCC9 /* NbaTeam.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

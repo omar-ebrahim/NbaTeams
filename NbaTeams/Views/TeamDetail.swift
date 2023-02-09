@@ -55,7 +55,7 @@ struct TeamDetail: View {
 
 struct TeamDetail_Previews: PreviewProvider {
     static var previews: some View {
-        TeamDetail(team: ModelData().nbaTeams[5])
+        TeamDetail(team: ModelData().nbaTeams[1])
             .environmentObject(ModelData())
     }
 }

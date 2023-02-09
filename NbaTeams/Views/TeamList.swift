@@ -13,8 +13,7 @@ struct TeamList: View {
     @State private var showFavoritesOnly = false
     
     var filteredTeams: [NbaTeam] {
-        modelData.nbaTeams.filter{
-            team in
+        modelData.nbaTeams.filter{ team in
             (!showFavoritesOnly || team.inFavourites)
         }
     }
