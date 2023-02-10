@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0701BB282991192100ECA1A0 /* TODOGetData.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0701BB272991192100ECA1A0 /* TODOGetData.rtf */; };
+		071120762996651500313C42 /* LineScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071120752996651500313C42 /* LineScore.swift */; };
+		071120782996653400313C42 /* LastMeeting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071120772996653400313C42 /* LastMeeting.swift */; };
+		0711207A2996658100313C42 /* ResultSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071120792996658100313C42 /* ResultSet.swift */; };
 		072F3829298FB79B0093BCC9 /* NbaTeam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F3828298FB79B0093BCC9 /* NbaTeam.swift */; };
 		072F382B298FB8ED0093BCC9 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F382A298FB8ED0093BCC9 /* ModelData.swift */; };
 		072F382E298FBCAF0093BCC9 /* RoundedSquareImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072F382D298FBCAF0093BCC9 /* RoundedSquareImage.swift */; };
@@ -21,11 +24,14 @@
 		07745685298FB04300A1EE7E /* nbateams.json in Resources */ = {isa = PBXBuildFile; fileRef = 07745684298FB04300A1EE7E /* nbateams.json */; };
 		07AEDD2C29901C970093B945 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEDD2B29901C970093B945 /* FavouriteButton.swift */; };
 		07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */; };
-		07DEE39D29924AA100DF13C6 /* Scoreboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEE39C29924AA100DF13C6 /* Scoreboard.swift */; };
+		07DEE39D29924AA100DF13C6 /* NbaJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEE39C29924AA100DF13C6 /* NbaJsonData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0701BB272991192100ECA1A0 /* TODOGetData.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = TODOGetData.rtf; sourceTree = "<group>"; };
+		071120752996651500313C42 /* LineScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineScore.swift; sourceTree = "<group>"; };
+		071120772996653400313C42 /* LastMeeting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastMeeting.swift; sourceTree = "<group>"; };
+		071120792996658100313C42 /* ResultSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSet.swift; sourceTree = "<group>"; };
 		072F3828298FB79B0093BCC9 /* NbaTeam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NbaTeam.swift; sourceTree = "<group>"; };
 		072F382A298FB8ED0093BCC9 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		072F382D298FBCAF0093BCC9 /* RoundedSquareImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedSquareImage.swift; sourceTree = "<group>"; };
@@ -40,7 +46,7 @@
 		07745684298FB04300A1EE7E /* nbateams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nbateams.json; sourceTree = "<group>"; };
 		07AEDD2B29901C970093B945 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
 		07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		07DEE39C29924AA100DF13C6 /* Scoreboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scoreboard.swift; sourceTree = "<group>"; };
+		07DEE39C29924AA100DF13C6 /* NbaJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NbaJsonData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +64,11 @@
 			isa = PBXGroup;
 			children = (
 				072F3828298FB79B0093BCC9 /* NbaTeam.swift */,
+				071120792996658100313C42 /* ResultSet.swift */,
 				072F382A298FB8ED0093BCC9 /* ModelData.swift */,
-				07DEE39C29924AA100DF13C6 /* Scoreboard.swift */,
+				07DEE39C29924AA100DF13C6 /* NbaJsonData.swift */,
+				071120752996651500313C42 /* LineScore.swift */,
+				071120772996653400313C42 /* LastMeeting.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -206,14 +215,17 @@
 			files = (
 				072F3830298FC29B0093BCC9 /* TeamList.swift in Sources */,
 				07745678298FADA500A1EE7E /* ContentView.swift in Sources */,
+				071120762996651500313C42 /* LineScore.swift in Sources */,
 				072F382E298FBCAF0093BCC9 /* RoundedSquareImage.swift in Sources */,
 				07AEDD2C29901C970093B945 /* FavouriteButton.swift in Sources */,
+				071120782996653400313C42 /* LastMeeting.swift in Sources */,
 				072F3832298FC3BD0093BCC9 /* TeamRow.swift in Sources */,
+				0711207A2996658100313C42 /* ResultSet.swift in Sources */,
 				072F382B298FB8ED0093BCC9 /* ModelData.swift in Sources */,
 				072F3834298FC54E0093BCC9 /* TeamDetail.swift in Sources */,
 				07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */,
 				07745676298FADA500A1EE7E /* NbaTeams.swift in Sources */,
-				07DEE39D29924AA100DF13C6 /* Scoreboard.swift in Sources */,
+				07DEE39D29924AA100DF13C6 /* NbaJsonData.swift in Sources */,
 				072F3829298FB79B0093BCC9 /* NbaTeam.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

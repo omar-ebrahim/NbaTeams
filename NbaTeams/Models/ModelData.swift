@@ -11,7 +11,6 @@ import Combine
 
 final class ModelData : ObservableObject {
     @Published var nbaTeams: [NbaTeam] = loadJson("nbateams.json")
-    @Published var scoreboardData: Scoreboard = loadNbaScoreboardData()
 }
 
 func loadJson<T: Decodable>(_ fileName: String) -> T {
@@ -37,30 +36,28 @@ func loadJson<T: Decodable>(_ fileName: String) -> T {
     }
 }
 
-func loadNbaScoreboardData() -> Scoreboard {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "MM/dd/yyyy"
-    let formattedDate = formatter.string(from: Date())
+func getTeamGameLog(teamId: Int) async throws -> NbaJsonData {
     
-    let url = URL(string: "https://stats.nba.com/stats/scoreboard/?GameDate=\(formattedDate)&LeagueID=00&DayOffset=0")
+    // This will need to be retrieved from somewhere else, as this will change over time
+    let season = "2022-23"
+    
+    let urlStr = "https://stats.nba.com/stats/teamgamelog?DateFrom=&DateTo=&LeagueID=00&Season=\(season)&SeasonType=Regular%20Season&TeamID=\(teamId)"
+    let url = URL(string: urlStr)
+    
     var request = URLRequest(url: url!)
     request.httpMethod = "GET"
     request.setValue("stats.nba.com", forHTTPHeaderField: "host")
+    request.setValue("https://www.nba.com/", forHTTPHeaderField: "Referer")
+    request.setValue("https://www.nba.com", forHTTPHeaderField: "Origin")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
-    request.setValue("stats", forHTTPHeaderField: "x-nba-stats-origin")
-    request.setValue("x-nba-stats-origin", forHTTPHeaderField: "Referer")
     
-    var retData: Scoreboard = Scoreboard(resultSets: [ResultSet]())
+    let (data, _) = try await URLSession.shared.data(for: request)
+    return try (JSONDecoder().decode(NbaJsonData.self, from: data))
     
-    URLSession.shared.dataTask(with: request) { data, response, error in
-        guard let data = data else { return }
-        do {
-            retData = try (JSONDecoder().decode(Scoreboard.self, from: data))
-        } catch {
-            print("Error loading JSON: \(error.localizedDescription)")
-        }
-    }.resume()
-    
-    return retData
+    /*
+     TODO: 
+     Use the game ID to call this URL https://stats.nba.com/stats/boxscoresummaryv2?GameID=0022200827 and then
+     get the LineScores section of the JSON, as this will have the points total of the game
+     */
 }
 

@@ -13,6 +13,8 @@ struct TeamDetail: View {
     
     @State private var bgColour: Color = .yellow
     
+    @State var nbaTeamData: NbaJsonData?
+    
     var team: NbaTeam
     
     var teamIndex: Int {
@@ -43,10 +45,20 @@ struct TeamDetail: View {
                 Divider()
             }
             .padding()
-            .onAppear {
+            .task {
                 let avgColour = (UIImage(named: team.imageName)?.averageColour) ?? .systemGray
                 bgColour = Color(avgColour)
+                do {
+                    try await nbaTeamData = getTeamGameLog(teamId: team.id)
+                    //var a = nbaTeamData?.resultSets[0]
+                } catch {
+                    
+                }
+                
             }
+        }
+        .onAppear{
+            
         }
         .navigationTitle(team.teamName)
         .navigationBarTitleDisplayMode(.inline)
