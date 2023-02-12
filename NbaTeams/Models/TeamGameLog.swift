@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct TeamGameLogDto: Hashable, Decodable {
+struct TeamGameLogDto: Hashable, Decodable, Identifiable {
+    let id: UUID
     let teamId: Int
     let gameId: String
     let gameDate: String
@@ -16,7 +17,12 @@ struct TeamGameLogDto: Hashable, Decodable {
     let points: Int
 }
 
-struct TeamGameLog: Hashable, Decodable {
+struct TeamGameLog: Hashable, Decodable, Identifiable {
+    
+    // it doesn't matter what ID this is, this is required to stop a multiple ID warning
+    // when it generates the list of TeamGameLog row cards
+    let id: UUID = UUID()
+    
     let teamId: Int
     let gameId: String
     let gameDate: String

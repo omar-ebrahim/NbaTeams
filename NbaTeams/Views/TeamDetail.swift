@@ -14,6 +14,7 @@ struct TeamDetail: View {
     // private state variables need to be initialised when declared to stop a build error
     @State private var bgColour: Color = .yellow
     @State private var teamGameLogs: [TeamGameLog] = [TeamGameLog]()
+    @State private var isLoading = true
     
     var team: NbaTeam
     
@@ -44,35 +45,47 @@ struct TeamDetail: View {
                 }
                 Divider()
                 
-                ForEach(teamGameLogs, id: \.self.gameId) { tgl in
-                    
-                    NavigationLink {
-                        TeamGame()
-                    } label: {
-                        let tglDto = TeamGameLogDto(teamId: tgl.teamId, gameId: tgl.gameId, gameDate: tgl.gameDate, matchup: tgl.matchup, winOrLoss: tgl.winOrLoss, points: tgl.points)
-                        TeamGameLogRow(teamGameLogDto: tglDto)
-                    }.foregroundColor(.black)
+                if isLoading {
+                    VStack(spacing: 15) {
+                        Color.white // This is required so it's centred for some reason...
+                        ProgressView()
+                        Text("Loading game history…")
+                    }
+                } else {
+                    ForEach(teamGameLogs) { teamGameLog in
+                        NavigationLink {
+                            TeamGame()
+                        } label: {
+                            let tglDto = TeamGameLogDto(
+                                id: teamGameLog.id,
+                                teamId: teamGameLog.teamId,
+                                gameId: teamGameLog.gameId,
+                                gameDate: teamGameLog.gameDate,
+                                matchup: teamGameLog.matchup,
+                                winOrLoss: teamGameLog.winOrLoss,
+                                points: teamGameLog.points)
+                            
+                            TeamGameLogRow(teamGameLogDto: tglDto, borderColor: bgColour)
+                        }.foregroundColor(Color(UIColor.label))
+                    }
                 }
-                
-                
             }
             .padding()
-            .task {
-                let avgColour = (UIImage(named: team.imageName)?.averageColour) ?? .systemGray
-                bgColour = Color(avgColour)
-                do {
-                    let data = try await getTeamGameLogs(teamId: team.id)
-                    data.forEach{ teamGamelog in
-                        self.teamGameLogs.append(teamGamelog)
+            .onAppear {
+                Task {
+                    let avgColour = (UIImage(named: team.imageName)?.averageColour) ?? .systemGray
+                    bgColour = Color(avgColour)
+                    do {
+                        let data = try await getTeamGameLogs(teamId: team.id)
+                        isLoading = false
+                        data.forEach{ teamGamelog in
+                            self.teamGameLogs.append(teamGamelog)
+                        }
+                    } catch {
+                        print("ERROR: CANNOT PARSE: \(error)")
                     }
-                } catch {
-                    print("ERROR: CANNOT PARSE: \(error)")
                 }
-                
             }
-        }
-        .onAppear{
-            
         }
         .navigationTitle(team.teamName)
         .navigationBarTitleDisplayMode(.inline)
