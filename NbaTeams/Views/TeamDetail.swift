@@ -49,10 +49,15 @@ struct TeamDetail: View {
                 let avgColour = (UIImage(named: team.imageName)?.averageColour) ?? .systemGray
                 bgColour = Color(avgColour)
                 do {
-                    try await nbaTeamData = getTeamGameLog(teamId: team.id)
-                    //var a = nbaTeamData?.resultSets[0]
+                    let data = try await getTeamGameLog(teamId: team.id)
+                    // We only have one resultSet row, which contains an array of TeamGameLog
+                    let resultSet = data.resultSets[0]
+                    let teamGameLogs = resultSet.val() as? [TeamGameLog]
+                    teamGameLogs?.forEach{ teamGamelog in
+                        print(teamGamelog)
+                    }
                 } catch {
-                    
+                    print("ERROR: CANNOT PARSE: \(error)")
                 }
                 
             }

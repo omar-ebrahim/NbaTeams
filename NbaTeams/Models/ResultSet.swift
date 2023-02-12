@@ -10,12 +10,26 @@ import Foundation
 enum ResultSet: Decodable {
     case lastMeeting([LastMeeting])
     case lineScore([LineScore])
+    case teamGameLog([TeamGameLog])
     case string([String]) // A catch-all for arrays we don't need.
     
     enum CodingKeys: CodingKey {
         case name
         case headers
         case rowSet
+    }
+    
+    func val() -> Any {
+        switch self {
+        case .lastMeeting(let value):
+            return value;
+        case .lineScore(let value):
+            return value
+        case .teamGameLog(let value):
+            return value
+        case .string(let value):
+            return value
+        }
     }
     
     init(from decoder: Decoder) throws {
@@ -31,9 +45,7 @@ enum ResultSet: Decodable {
             "SeriesStandings",
             "EastConfStandingsByDay",
             "WestConfStandingsByDay",
-            "Available",
-            "TeamGameLog",
-            "GameSummary",
+            "Available",            "GameSummary",
             "OtherStats",
             "Officials",
             "InactivePlayers",
@@ -41,6 +53,10 @@ enum ResultSet: Decodable {
             "SeasonSeries",
             "AvailableVideo":
             self = .string([String]()) // Set an empty array, we don't need them yet
+            
+        case "TeamGameLog":
+            self = .teamGameLog(try container.decode([TeamGameLog].self, forKey: .rowSet))
+            //self = .string([ "a", "b", "c" ])
             
         case "LineScore":
             self = .lineScore(try container.decode([LineScore].self, forKey: .rowSet))

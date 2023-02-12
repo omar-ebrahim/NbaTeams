@@ -55,7 +55,7 @@ func getTeamGameLog(teamId: Int) async throws -> NbaJsonData {
     return try (JSONDecoder().decode(NbaJsonData.self, from: data))
     
     /*
-     TODO: 
+     TODO:
      Use the game ID to call this URL https://stats.nba.com/stats/boxscoresummaryv2?GameID=0022200827 and then
      get the LineScores section of the JSON, as this will have the points total of the game
      */
