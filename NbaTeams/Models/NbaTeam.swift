@@ -22,7 +22,3 @@ struct NbaTeam: Hashable, Codable, Identifiable {
         Image(imageName)
     }
 }
-
-//func A() async throws {
-//    try await loadNbaScoreboardData()
-//}

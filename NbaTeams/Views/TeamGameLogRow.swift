@@ -41,12 +41,3 @@ struct TeamGameLogRow_Previews: PreviewProvider {
         TeamGameLogRow(teamGameLogDto: TeamGameLogDto(id: UUID(), teamId: 1, gameId: "0992423424", gameDate: "09/25/2022", matchup: "ATL @ WAS", winOrLoss: "W", points: 109), borderColor: .black)
     }
 }
-
-func getFontColour(color: Color) -> Color {
-    var r, g, b, a: CGFloat
-    (r, g, b, a) = (0, 0, 0, 0)
-    UIColor(color).getRed(&r, green: &g, blue: &b, alpha: &a)
-    let luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b
-    //logger(luminance)
-    return luminance < 0.59 ? .white : .black
-}
