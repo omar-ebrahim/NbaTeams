@@ -24,8 +24,10 @@
 		0774567D298FADA600A1EE7E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0774567C298FADA600A1EE7E /* Preview Assets.xcassets */; };
 		07745685298FB04300A1EE7E /* nbateams.json in Resources */ = {isa = PBXBuildFile; fileRef = 07745684298FB04300A1EE7E /* nbateams.json */; };
 		07AEDD2C29901C970093B945 /* FavouriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07AEDD2B29901C970093B945 /* FavouriteButton.swift */; };
+		07BE7C9B2998FF8000AFCBBA /* TeamGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE7C9A2998FF8000AFCBBA /* TeamGame.swift */; };
 		07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */; };
 		07DEE39D29924AA100DF13C6 /* NbaJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEE39C29924AA100DF13C6 /* NbaJsonData.swift */; };
+		07F06F502998E19C0051BD43 /* TeamGameLogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F06F4F2998E19C0051BD43 /* TeamGameLogRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +49,11 @@
 		0774567C298FADA600A1EE7E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07745684298FB04300A1EE7E /* nbateams.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = nbateams.json; sourceTree = "<group>"; };
 		07AEDD2B29901C970093B945 /* FavouriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteButton.swift; sourceTree = "<group>"; };
+		07BE7C9A2998FF8000AFCBBA /* TeamGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGame.swift; sourceTree = "<group>"; };
+		07BE7C9C2999517900AFCBBA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		07DEE39C29924AA100DF13C6 /* NbaJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NbaJsonData.swift; sourceTree = "<group>"; };
+		07F06F4F2998E19C0051BD43 /* TeamGameLogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGameLogRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +89,8 @@
 				072F3831298FC3BD0093BCC9 /* TeamRow.swift */,
 				072F3833298FC54E0093BCC9 /* TeamDetail.swift */,
 				07AEDD2B29901C970093B945 /* FavouriteButton.swift */,
+				07F06F4F2998E19C0051BD43 /* TeamGameLogRow.swift */,
+				07BE7C9A2998FF8000AFCBBA /* TeamGame.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -108,6 +115,7 @@
 		07745674298FADA500A1EE7E /* NbaTeams */ = {
 			isa = PBXGroup;
 			children = (
+				07BE7C9C2999517900AFCBBA /* Info.plist */,
 				07CEDF272991029F00D230A8 /* Extensions */,
 				072F3827298FB6E60093BCC9 /* Models */,
 				07745683298FB01600A1EE7E /* Resources */,
@@ -221,11 +229,13 @@
 				071120762996651500313C42 /* LineScore.swift in Sources */,
 				072F382E298FBCAF0093BCC9 /* RoundedSquareImage.swift in Sources */,
 				07AEDD2C29901C970093B945 /* FavouriteButton.swift in Sources */,
+				07BE7C9B2998FF8000AFCBBA /* TeamGame.swift in Sources */,
 				071120782996653400313C42 /* LastMeeting.swift in Sources */,
 				072F3832298FC3BD0093BCC9 /* TeamRow.swift in Sources */,
 				0711207A2996658100313C42 /* ResultSet.swift in Sources */,
 				072F382B298FB8ED0093BCC9 /* ModelData.swift in Sources */,
 				072F3834298FC54E0093BCC9 /* TeamDetail.swift in Sources */,
+				07F06F502998E19C0051BD43 /* TeamGameLogRow.swift in Sources */,
 				07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */,
 				0711207C2996669E00313C42 /* TeamGameLog.swift in Sources */,
 				07745676298FADA500A1EE7E /* NbaTeams.swift in Sources */,
@@ -361,7 +371,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NbaTeams/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = NbaTeams/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -389,7 +399,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"NbaTeams/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_FILE = NbaTeams/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

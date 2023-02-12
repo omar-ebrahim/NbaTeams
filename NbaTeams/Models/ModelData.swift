@@ -36,7 +36,7 @@ func loadJson<T: Decodable>(_ fileName: String) -> T {
     }
 }
 
-func getTeamGameLog(teamId: Int) async throws -> NbaJsonData {
+func getTeamGameLogs(teamId: Int) async throws -> [TeamGameLog] {
     
     // This will need to be retrieved from somewhere else, as this will change over time
     let season = "2022-23"
@@ -51,9 +51,12 @@ func getTeamGameLog(teamId: Int) async throws -> NbaJsonData {
     request.setValue("https://www.nba.com", forHTTPHeaderField: "Origin")
     request.setValue("application/json", forHTTPHeaderField: "Accept")
     
-    let (data, _) = try await URLSession.shared.data(for: request)
-    return try (JSONDecoder().decode(NbaJsonData.self, from: data))
+    let (d, _) = try await URLSession.shared.data(for: request)
+    let data = try (JSONDecoder().decode(NbaJsonData.self, from: d))
     
+    let resultSet = data.resultSets[0]
+    let teamGameLogs = resultSet.val() as? [TeamGameLog]
+    return teamGameLogs ?? [TeamGameLog]() // Return an empty array if it was nil
     /*
      TODO:
      Use the game ID to call this URL https://stats.nba.com/stats/boxscoresummaryv2?GameID=0022200827 and then

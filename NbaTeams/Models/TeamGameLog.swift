@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct TeamGameLog: Decodable {
+struct TeamGameLogDto: Hashable, Decodable {
+    let teamId: Int
+    let gameId: String
+    let gameDate: String
+    let matchup: String
+    let winOrLoss: String
+    let points: Int
+}
+
+struct TeamGameLog: Hashable, Decodable {
     let teamId: Int
     let gameId: String
     let gameDate: String

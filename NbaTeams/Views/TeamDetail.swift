@@ -11,9 +11,9 @@ struct TeamDetail: View {
     
     @EnvironmentObject var modelData: ModelData
     
+    // private state variables need to be initialised when declared to stop a build error
     @State private var bgColour: Color = .yellow
-    
-    @State var nbaTeamData: NbaJsonData?
+    @State private var teamGameLogs: [TeamGameLog] = [TeamGameLog]()
     
     var team: NbaTeam
     
@@ -43,18 +43,27 @@ struct TeamDetail: View {
                     FavouriteButton(isSet: $modelData.nbaTeams[teamIndex].inFavourites)
                 }
                 Divider()
+                
+                ForEach(teamGameLogs, id: \.self.gameId) { tgl in
+                    
+                    NavigationLink {
+                        TeamGame()
+                    } label: {
+                        let tglDto = TeamGameLogDto(teamId: tgl.teamId, gameId: tgl.gameId, gameDate: tgl.gameDate, matchup: tgl.matchup, winOrLoss: tgl.winOrLoss, points: tgl.points)
+                        TeamGameLogRow(teamGameLogDto: tglDto)
+                    }.foregroundColor(.black)
+                }
+                
+                
             }
             .padding()
             .task {
                 let avgColour = (UIImage(named: team.imageName)?.averageColour) ?? .systemGray
                 bgColour = Color(avgColour)
                 do {
-                    let data = try await getTeamGameLog(teamId: team.id)
-                    // We only have one resultSet row, which contains an array of TeamGameLog
-                    let resultSet = data.resultSets[0]
-                    let teamGameLogs = resultSet.val() as? [TeamGameLog]
-                    teamGameLogs?.forEach{ teamGamelog in
-                        print(teamGamelog)
+                    let data = try await getTeamGameLogs(teamId: team.id)
+                    data.forEach{ teamGamelog in
+                        self.teamGameLogs.append(teamGamelog)
                     }
                 } catch {
                     print("ERROR: CANNOT PARSE: \(error)")

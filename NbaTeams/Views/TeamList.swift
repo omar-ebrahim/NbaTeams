@@ -35,10 +35,7 @@ struct TeamList: View {
                     }
                     .swipeActions {
                         let index = modelData.nbaTeams.firstIndex(where:{ $0.id == team.id})!
-                        
                         FavouriteButton(isSet: $modelData.nbaTeams[index].inFavourites)
-                        
-                        
                     }
                 }
                 .navigationTitle("Teams")
