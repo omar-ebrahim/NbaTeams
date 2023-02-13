@@ -14,7 +14,6 @@ struct TeamGameLogDto: Hashable, Decodable, Identifiable {
     let gameDate: String
     let matchup: String
     let winOrLoss: String
-    let points: Int
 }
 
 struct TeamGameLog: Hashable, Decodable, Identifiable {

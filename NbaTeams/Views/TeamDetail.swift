@@ -65,8 +65,7 @@ struct TeamDetail: View {
                                 gameId: teamGameLog.gameId,
                                 gameDate: teamGameLog.gameDate,
                                 matchup: teamGameLog.matchup,
-                                winOrLoss: teamGameLog.winOrLoss,
-                                points: teamGameLog.points)
+                                winOrLoss: teamGameLog.winOrLoss)
                             
                             TeamGameLogRow(teamGameLogDto: tglDto, borderColor: bgColour)
                         }.foregroundColor(Color(UIColor.label))

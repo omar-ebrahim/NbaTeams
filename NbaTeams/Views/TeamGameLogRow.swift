@@ -32,8 +32,7 @@ struct TeamGameLogRow: View {
                 
                 Spacer(minLength: 10)
                 VStack {
-                    Text(teamGameLogDto.winOrLoss == "W" ? "🏆" : "🏀")
-                    Text("\(teamGameLogDto.points)")
+                    Text(teamGameLogDto.winOrLoss == "W" ? "🏆" : "👎🏼")
                 }
             }
             .font(.title2)
@@ -49,6 +48,6 @@ struct TeamGameLogRow: View {
 struct TeamGameLogRow_Previews: PreviewProvider {
     
     static var previews: some View {
-        TeamGameLogRow(teamGameLogDto: TeamGameLogDto(id: UUID(), teamId: 1, gameId: "0992423424", gameDate: "Feb 11, 2023", matchup: "ATL vs. WAS", winOrLoss: "W", points: 109), borderColor: .black)
+        TeamGameLogRow(teamGameLogDto: TeamGameLogDto(id: UUID(), teamId: 1, gameId: "0992423424", gameDate: "Feb 11, 2023", matchup: "ATL vs. WAS", winOrLoss: "L"), borderColor: .black)
     }
 }
