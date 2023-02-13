@@ -15,29 +15,40 @@ struct TeamGameLogRow: View {
     @State private var fontColour: Color = Color.white
     
     var body: some View {
-        VStack {
+        let borderRadius: CGFloat = 20
+        
+        let matchup = getLineUp(lineup: teamGameLogDto.matchup)
+        
             
-            let borderRadius: CGFloat = 20
-            
-            Text("\(teamGameLogDto.gameDate): \(teamGameLogDto.matchup), \(teamGameLogDto.points)")
-                .fixedSize(horizontal: false, vertical: true)
-                    .multilineTextAlignment(.center)
-                    .padding()
-                    .frame(
-                        minWidth: 0,
-                        maxWidth: .infinity,
-                        minHeight: 80,
-                        maxHeight: 80,
-                        alignment: .center)
-                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: borderRadius))
-                    .overlay(RoundedRectangle(cornerRadius: borderRadius).stroke(borderColor, lineWidth: 3))
-        }
+            HStack {
+                VStack(alignment: .leading) {
+                    Text("\(teamGameLogDto.gameDate)").bold()
+                    Divider()
+                    Text("\(matchup.againstTeam)")
+                }
+                
+                Spacer(minLength: 10)
+                Text("\(matchup.homeOrAway == "H" ? "🏠" : "🛫")")
+                
+                Spacer(minLength: 10)
+                VStack {
+                    Text(teamGameLogDto.winOrLoss == "W" ? "🏆" : "🏀")
+                    Text("\(teamGameLogDto.points)")
+                }
+            }
+            .font(.title2)
+            .fixedSize(horizontal: false, vertical: true)
+            .padding()
+            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, alignment: .center)
+            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: borderRadius))
+            .overlay(RoundedRectangle(cornerRadius: borderRadius).stroke(borderColor, lineWidth: 3))
+          
     }
 }
 
 struct TeamGameLogRow_Previews: PreviewProvider {
     
     static var previews: some View {
-        TeamGameLogRow(teamGameLogDto: TeamGameLogDto(id: UUID(), teamId: 1, gameId: "0992423424", gameDate: "09/25/2022", matchup: "ATL @ WAS", winOrLoss: "W", points: 109), borderColor: .black)
+        TeamGameLogRow(teamGameLogDto: TeamGameLogDto(id: UUID(), teamId: 1, gameId: "0992423424", gameDate: "Feb 11, 2023", matchup: "ATL vs. WAS", winOrLoss: "W", points: 109), borderColor: .black)
     }
 }

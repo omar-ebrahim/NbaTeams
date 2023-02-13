@@ -43,6 +43,9 @@ struct TeamDetail: View {
                     Spacer()
                     FavouriteButton(isSet: $modelData.nbaTeams[teamIndex].inFavourites)
                 }
+                
+                Divider()
+                Text("2022 to 2023 season")
                 Divider()
                 
                 if isLoading {

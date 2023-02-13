@@ -28,6 +28,7 @@
 		07CEDF2B299102ED00D230A8 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */; };
 		07DEE39D29924AA100DF13C6 /* NbaJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DEE39C29924AA100DF13C6 /* NbaJsonData.swift */; };
 		07F06F502998E19C0051BD43 /* TeamGameLogRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F06F4F2998E19C0051BD43 /* TeamGameLogRow.swift */; };
+		07F32C62299A342A0098BCBD /* TeamLineup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F32C61299A342A0098BCBD /* TeamLineup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		07CEDF2A299102ED00D230A8 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		07DEE39C29924AA100DF13C6 /* NbaJsonData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NbaJsonData.swift; sourceTree = "<group>"; };
 		07F06F4F2998E19C0051BD43 /* TeamGameLogRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamGameLogRow.swift; sourceTree = "<group>"; };
+		07F32C61299A342A0098BCBD /* TeamLineup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamLineup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				071120752996651500313C42 /* LineScore.swift */,
 				071120772996653400313C42 /* LastMeeting.swift */,
 				0711207B2996669E00313C42 /* TeamGameLog.swift */,
+				07F32C61299A342A0098BCBD /* TeamLineup.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				07AEDD2C29901C970093B945 /* FavouriteButton.swift in Sources */,
 				07BE7C9B2998FF8000AFCBBA /* TeamGame.swift in Sources */,
 				071120782996653400313C42 /* LastMeeting.swift in Sources */,
+				07F32C62299A342A0098BCBD /* TeamLineup.swift in Sources */,
 				072F3832298FC3BD0093BCC9 /* TeamRow.swift in Sources */,
 				0711207A2996658100313C42 /* ResultSet.swift in Sources */,
 				072F382B298FB8ED0093BCC9 /* ModelData.swift in Sources */,

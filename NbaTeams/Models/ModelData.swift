@@ -64,3 +64,55 @@ func getTeamGameLogs(teamId: Int) async throws -> [TeamGameLog] {
      */
 }
 
+func getLineUp(lineup: String) -> TeamLineup {
+    
+    var teamLineUp: TeamLineup
+    
+    if lineup.contains("@") {
+        let splitLineup = lineup.split(separator: " @ ")
+        let teamName = getfullTeamName(abbreviation: "\(splitLineup[1])")
+        teamLineUp = TeamLineup(againstTeam: teamName, homeOrAway: "A")
+    } else {
+        let splitLineup = lineup.split(separator: " vs. ")
+        let teamName = getfullTeamName(abbreviation: "\(splitLineup[1])")
+        teamLineUp = TeamLineup(againstTeam: teamName, homeOrAway: "H")
+    }
+    
+    return teamLineUp
+}
+
+func getfullTeamName(abbreviation: String) -> String {
+    switch abbreviation.uppercased() {
+    case "ATL": return "Atlanta Hawks"
+    case "BOS": return "Boston Celtics"
+    case "BKN": return "Brooklyn Nets"
+    case "CHA": return "Charlotte Hornets"
+    case "CHI": return "Chicago Bulls"
+    case "CLE": return "Cleveland Cavaliers"
+    case "DAL": return "Dallas Mavericks"
+    case "DEN": return "Denver Nuggets"
+    case "DET": return "Detroit Pistons"
+    case "GSW": return "Golden State Warriors"
+    case "HOU": return "Houston Rockets"
+    case "IND": return "Indiana Pacers"
+    case "LAC": return "LA Clippers"
+    case "LAL": return "LA Lakers"
+    case "MEM": return "Memphis Grizzlies"
+    case "MIA": return "Miami Heat"
+    case "MIL": return "Milwaukee Bucks"
+    case "MIN": return "Minnesota Timberwolves"
+    case "NOP": return "New Orleans Pelicans"
+    case "NYK": return "New York Knicks"
+    case "OCK": return "Oklahoma City Thunder"
+    case "ORL": return "Orlando Magic"
+    case "PHI": return "Philadelphia 76ers"
+    case "PHX": return "Phoenix Suns"
+    case "POR": return "Portland Trail Blazers"
+    case "SAC": return "Sacramento Kings"
+    case "SAS": return "San Antonio Spurs"
+    case "TOR": return "Toronto Raptors"
+    case "UTA": return "Utah Jazz"
+    case "WAS": return "Washington Wizards"
+    default: return "UNKNOWN"
+    }
+}
