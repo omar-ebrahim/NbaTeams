@@ -64,6 +64,29 @@ func getTeamGameLogs(teamId: Int) async throws -> [TeamGameLog] {
      */
 }
 
+func getLineScores(gameId: String) async throws -> (lineScores: [LineScore], gameInfo: [GameInfo]) {
+    
+    let urlStr = "https://stats.nba.com/stats/boxscoresummaryv2?GameID=\(gameId)"
+    let url = URL(string: urlStr)
+    
+    var request = URLRequest(url: url!)
+    request.httpMethod = "GET"
+    request.setValue("stats.nba.com", forHTTPHeaderField: "host")
+    request.setValue("https://www.nba.com/", forHTTPHeaderField: "Referer")
+    request.setValue("https://www.nba.com", forHTTPHeaderField: "Origin")
+    request.setValue("application/json", forHTTPHeaderField: "Accept")
+    
+    let (d, _) = try await URLSession.shared.data(for: request)
+    let data = try (JSONDecoder().decode(NbaJsonData.self, from: d))
+    
+    //let resultSet = data.resultSets[0] // it's not index 0. loop through and find it
+    let gameInfo = data.resultSets[4].val() as? [GameInfo]
+    
+    let teamGameLogs = data.resultSets[5].val() as? [LineScore]
+    return (teamGameLogs ?? [LineScore](), gameInfo ?? [GameInfo]()) // Return an empty array if it was nil
+}
+
+
 func getLineUp(lineup: String) -> TeamLineup {
     
     var teamLineUp: TeamLineup

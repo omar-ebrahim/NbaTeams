@@ -57,7 +57,7 @@ struct TeamDetail: View {
                 } else {
                     ForEach(teamGameLogs) { teamGameLog in
                         NavigationLink {
-                            TeamGame()
+                            TeamGame(gameId: teamGameLog.gameId, teamName: team.teamName)
                         } label: {
                             let tglDto = TeamGameLogDto(
                                 id: teamGameLog.id,

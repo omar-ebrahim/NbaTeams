@@ -8,7 +8,8 @@
 import Foundation
 
 // There will be two of these - first one is Home, second is Visitor
-struct LineScore: Decodable {
+struct LineScore: Decodable, Identifiable {
+    let id: UUID
     let gameDateEst: String
     let gameSequence: Int
     let gameId: String
@@ -17,6 +18,7 @@ struct LineScore: Decodable {
     let teamCityName: String
     let teamNickName: String
     let teamWinsLosses: String
+    let pointsQuarter1 : Int
     let pointsQuarter2 : Int
     let pointsQuarter3: Int
     let pointsQuarter4: Int
@@ -33,6 +35,8 @@ struct LineScore: Decodable {
     let points: Int
     
     init(from decoder: Decoder) throws {
+        id = UUID()
+        
         var container = try decoder.unkeyedContainer()
         gameDateEst = try container.decode(String.self) // It's in UTC format
         gameSequence = try container.decode(Int.self)
@@ -42,6 +46,7 @@ struct LineScore: Decodable {
         teamCityName = try container.decode(String.self)
         teamNickName = try container.decode(String.self)
         teamWinsLosses = try container.decode(String.self)
+        pointsQuarter1  = try container.decode(Int.self)
         pointsQuarter2  = try container.decode(Int.self)
         pointsQuarter3 = try container.decode(Int.self)
         pointsQuarter4 = try container.decode(Int.self)
