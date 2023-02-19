@@ -11,6 +11,7 @@ struct TeamGame: View {
     
     var gameId: String
     var teamName: String
+    var homeGame: Bool
     
     @State private var gameInfo: [GameInfo] = [GameInfo]()
     @State private var lineScores: [LineScore] = [LineScore]() // there will be 2: home and visitor
@@ -22,16 +23,17 @@ struct TeamGame: View {
                 Text("Scores").font(.title)
                 
                 Divider()
+                
                 if gameInfo.count > 0 { // required due to build error
                     let gData = gameInfo[0] // There will only be 1 record
                     Group {
+                        Spacer().frame(height: 10)
+                        Text("\(gData.gameDate)").font(.subheadline)
                         HStack {
-                            Text("\(gData.gameDate)").font(.subheadline)
-                            Spacer()
-                        }
-                        HStack {
+                            Text("\(homeGame ? "🏠" : "🛫")")
+                            Spacer().frame(width: 20)
                             Text("⏱️ \(gData.gameTime)")
-                            Spacer().frame(width: 50)
+                            Spacer().frame(width: 20)
                             Text("👥 \(gData.attendance)")
                         }
                         .padding()
@@ -80,6 +82,7 @@ struct TeamGame: View {
                     awayOtTotal
                     
                     let homeWinner = homeTotal > awayTotal
+                    
                     
                     Divider()
                     
@@ -156,6 +159,6 @@ struct TeamGame: View {
 
 struct TeamGame_Previews: PreviewProvider {
     static var previews: some View {
-        TeamGame(gameId: "0022200827", teamName: "TEST")
+        TeamGame(gameId: "0022200827", teamName: "TEST", homeGame: true)
     }
 }
