@@ -7,10 +7,34 @@
 
 import Foundation
 import Combine
+import SwiftUI
 
 
 final class ModelData : ObservableObject {
     @Published var nbaTeams: [NbaTeam] = loadJson("nbateams.json")
+}
+
+func getTeamImage(_ teamId: Int) -> Image {
+    let data : [NbaTeam] = loadJson("nbateams.json")
+    for d in data {
+        if d.id == teamId {
+            return d.image
+        }
+    }
+    
+    fatalError("Cannot get team image...")
+}
+
+func getTeamUIImageAverageColour(_ teamId: Int) -> Color {
+    let data : [NbaTeam] = loadJson("nbateams.json")
+    for d in data {
+        if d.id == teamId {
+            let avgColour = (UIImage(named: d.imageName)?.averageColour) ?? .systemGray
+            return Color(avgColour)
+        }
+    }
+    
+    fatalError("Cannot get team image...")
 }
 
 func loadJson<T: Decodable>(_ fileName: String) -> T {

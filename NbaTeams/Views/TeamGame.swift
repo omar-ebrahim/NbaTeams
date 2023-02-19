@@ -19,29 +19,29 @@ struct TeamGame: View {
         
         ScrollView {
             VStack{
-                Text("Scores")
-                    .font(.title)
+                Text("Scores").font(.title)
                 
                 Divider()
-                
                 if gameInfo.count > 0 { // required due to build error
                     let gData = gameInfo[0] // There will only be 1 record
-                    
-                    HStack {
-                        Text("\(gData.gameDate)").font(.subheadline)
-                        Spacer()
-                    }
-                    HStack {
-                        Text("Game Time \(gData.gameTime)")
-                        Spacer()
-                    }
-                    HStack {
-                        Text("Attendance: \(gData.attendance)")
-                        Spacer()
-                    }
+                    Group {
+                        HStack {
+                            Text("\(gData.gameDate)").font(.subheadline)
+                            Spacer()
+                        }
+                        HStack {
+                            Text("⏱️ \(gData.gameTime)")
+                            Spacer().frame(width: 50)
+                            Text("👥 \(gData.attendance)")
+                        }
+                        .padding()
+                    }.padding(3)
                 }
                 
-                if (lineScores.count > 0){
+                Spacer().frame(height: 20)
+                
+                if lineScores.count > 0 {
+                    
                     let homeTeam = lineScores[0]
                     let awayTeam = lineScores[1]
                     
@@ -83,60 +83,60 @@ struct TeamGame: View {
                     
                     Divider()
                     
-                    HStack {
-                        
+                    Spacer().frame(height: 20)
+                    
+                    let homeColour = getTeamUIImageAverageColour(homeTeam.teamId)
+                    
+                    Group {
                         VStack {
+                            HStack {
+                                getTeamImage(homeTeam.teamId).resizable().aspectRatio(contentMode: .fit).frame(width: 90)
+                                Spacer()
+                                Text("\(homeTeam.teamCityName) \(homeTeam.teamNickName)").font(.headline)
+                                Spacer()
+                                Text("\(homeTotal)")
+                                if homeWinner { Text("🏆") } else { Text("🏀") }
+                            }.padding(10)
                             
-                            
-                            
-                            Text("\(homeTeam.teamCityName) \(homeTeam.teamNickName)")
-                            
-                            Divider()
-                            
-                            Text("Q1: \(homeTeam.pointsQuarter1)")
-                            Text("Q2: \(homeTeam.pointsQuarter2)")
-                            Text("Q3: \(homeTeam.pointsQuarter3)")
-                            Text("Q4: \(homeTeam.pointsQuarter4)")
-                            
-                            Text("OT: \(homeOtTotal)")
-                            Divider()
-                            Text("Total: \(homeTotal)")
-                            
-                            if homeWinner {
-                                Text("🏆")
-                            } else {
-                                Text("🏀")
-                            }
+                            HStack {
+                                Text("⏳ Q1: \(homeTeam.pointsQuarter1), Q2: \(homeTeam.pointsQuarter2), Q3: \(homeTeam.pointsQuarter3), Q4: \(homeTeam.pointsQuarter4)")
+                                Spacer()//.frame(width: 30)
+                                Text("⌛️ OT: \(homeOtTotal)")
+                            }.padding(10)
                         }
-                        Spacer()
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(homeColour, lineWidth: 3))
+                    }
+                    
+                    Spacer().frame(height: 20)
+                    
+                    let awayColour = getTeamUIImageAverageColour(awayTeam.teamId)
+                    
+                    Group {
                         VStack {
+                            HStack {
+                                let awayTeamImage = getTeamImage(awayTeam.teamId)
+                                
+                                awayTeamImage.resizable().aspectRatio(contentMode: .fit).frame(width: 90)
+                                Spacer()
+                                Text("\(awayTeam.teamCityName) \(awayTeam.teamNickName)").font(.headline)
+                                Spacer()
+                                Text("\(awayTotal)")
+                                if !homeWinner { Text("🏆") } else { Text("🏀") }
+                            }.padding(10)
                             
-                            Text("\(awayTeam.teamCityName) \(awayTeam.teamNickName)")
-                            Divider()
-                            
-                            Text("Q1: \(awayTeam.pointsQuarter1)")
-                            Text("Q2: \(awayTeam.pointsQuarter2)")
-                            Text("Q3: \(awayTeam.pointsQuarter3)")
-                            Text("Q4: \(awayTeam.pointsQuarter4)")
-                            
-                            Text("OT: \(awayOtTotal)")
-                            Divider()
-                            Text("Total: \(awayTotal)")
-                            if !homeWinner {
-                                Text("🏆")
-                            } else {
-                                Text("🏀")
+                            HStack {
+                                Text("⏳ Q1: \(awayTeam.pointsQuarter1), Q2: \(awayTeam.pointsQuarter2), Q3: \(awayTeam.pointsQuarter3), Q4: \(awayTeam.pointsQuarter4)")
+                                Spacer()//.frame(width: 30)
+                                Text("⌛️ OT: \(awayOtTotal)")
                             }
+                            .padding(10)
                         }
+                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 10))
+                        .overlay(RoundedRectangle(cornerRadius: 10).stroke(awayColour, lineWidth: 3))
                     }
                 }
-                
-                
             }.padding()
-            
-            
-            
-            
         }
         .onAppear{
             Task {
@@ -144,17 +144,13 @@ struct TeamGame: View {
                     let gameData = try await getLineScores(gameId: gameId)
                     gameInfo = gameData.gameInfo
                     lineScores = gameData.lineScores
-                    
-                    print(gameData.gameInfo)
-                    print(gameData.lineScores)
                 } catch {
-                    
+                    print("Couldn't get line scores...")
                 }
             }
         }
         .navigationTitle(teamName)
         .navigationBarTitleDisplayMode(.inline)
-        
     }
 }
 
