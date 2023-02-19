@@ -150,7 +150,7 @@ func getfullTeamName(abbreviation: String) -> String {
     case "MIN": return "Minnesota Timberwolves"
     case "NOP": return "New Orleans Pelicans"
     case "NYK": return "New York Knicks"
-    case "OCK": return "Oklahoma City Thunder"
+    case "OKC": return "Oklahoma City Thunder"
     case "ORL": return "Orlando Magic"
     case "PHI": return "Philadelphia 76ers"
     case "PHX": return "Phoenix Suns"
