@@ -57,7 +57,8 @@ struct TeamDetail: View {
                 } else {
                     ForEach(teamGameLogs) { teamGameLog in
                         NavigationLink {
-                            TeamGame(gameId: teamGameLog.gameId, teamName: team.teamName)
+                            let isHomeGame = getLineUp(lineup: teamGameLog.matchup).homeOrAway == "H"
+                            TeamGame(gameId: teamGameLog.gameId, teamName: team.teamName, homeGame: isHomeGame)
                         } label: {
                             let tglDto = TeamGameLogDto(
                                 id: teamGameLog.id,
