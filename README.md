@@ -15,3 +15,7 @@ Can filter teams to show only favourites
 Can see matches played by the team
 
 <img src="Images/04.png" width="270" height="585">
+
+Can view the match score data
+
+<img src="Images/05.png" width="270" height="585">
